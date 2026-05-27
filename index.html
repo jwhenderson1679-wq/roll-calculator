@@ -66,41 +66,32 @@
       gap: 10px;
     }
 
-    .calculator-layout {
+.calculator-layout {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 25px;
   margin-top: 20px;
-}
-
-.form-section {
-  flex: 1;
 }
 
 .diagram-section {
   flex: 1;
 }
 
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 16px;
+.form-section {
+  flex: 1;
+  max-width: 250px;
 }
 
-button {
-  width: 45%;
+.result-section {
+  flex: 1;
+  min-width: 220px;
+}
+
+.result {
+  margin-top: 0;
 }
     
-    .result {
-      margin-top: 20px;
-      padding: 12px;
-      background: white;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 15px;
-      line-height: 1.6;
-    }
     svg {
       display: block;
       margin: 0 auto;
@@ -147,24 +138,46 @@ button {
   Formula: L = π(OD² - ID²) / 4t
 </div>
 
-  <div class="calculator-layout">
+ <div class="calculator-layout">
 
+  <!-- LEFT: SVG -->
+  <div class="diagram-section">
+
+    <!-- SVG Diagram -->
+    <svg viewBox="0 0 360 360">
+      ...
+    </svg>
+
+  </div>
+
+  <!-- CENTER: FORM -->
   <div class="form-section">
 
-  <!-- Calculator Form -->
-  <label for="diameter">Outer Diameter (in):</label>
-  <input id="diameter" type="number" step="any" placeholder="e.g. 24" tabindex="1">
+    <label for="diameter">Outer Diameter (in):</label>
+    <input id="diameter" type="number" step="any" placeholder="e.g. 24" tabindex="1">
 
-  <label for="core">Core Diameter (in):</label>
-  <input id="core" type="number" step="any" placeholder="e.g. 3" tabindex="2">
+    <label for="core">Core Diameter (in):</label>
+    <input id="core" type="number" step="any" placeholder="e.g. 3" tabindex="2">
 
-  <label for="thickness">Material Thickness (in):</label>
-  <input id="thickness" type="number" step="any" placeholder="e.g. 0.005" tabindex="3">
+    <label for="thickness">Material Thickness (in):</label>
+    <input id="thickness" type="number" step="any" placeholder="e.g. 0.005" tabindex="3">
 
-  <label for="width">Roll Width (in):</label>
-  <input id="width" type="number" step="any" placeholder="(Optional) e.g. 36" tabindex="4">
+    <label for="width">Roll Width (in):</label>
+    <input id="width" type="number" step="any" placeholder="(Optional) e.g. 36" tabindex="4">
 
+    <div class="button-container">
+      <button onclick="calculate()">Calculate</button>
+      <button onclick="clearFields()" style="background-color:#f44336">Clear</button>
     </div>
+
+  </div>
+
+  <!-- RIGHT: RESULTS -->
+  <div class="result-section">
+    <div class="result" id="result"></div>
+  </div>
+
+</div>
 
   <div class="diagram-section">  
 
